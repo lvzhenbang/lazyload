@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>lazyload</title>
+  <style>
+    html,body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: #ccc;
+    }
+    img+img {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <img class="loading" data-src="https://cn.bing.com/th?id=OSA.785E03B1CF4497F195465DA85E1C22C6&w=186&h=88&c=7&rs=2&qlt=80&cdv=1&pid=PopNow" alt="">
+  <img class="loading" data-src="https://cn.bing.com/th?id=OSA.dbc15682bddedcc52bfdc39483098ee0&w=186&h=88&c=7&rs=2&qlt=80&cdv=1&pid=PopNow" alt="">
+  <img class="loading" data-src="https://cn.bing.com/th?id=OSA.bada9cd916bbc97514a7124cb60b8163&w=186&h=88&c=7&rs=2&qlt=80&cdv=1&pid=PopNow" alt="">
+  <img class="loading" data-src="https://cn.bing.com/th?id=OSA.e6de1daed8731ff7cc23dfefea6abc70&w=186&h=88&c=7&rs=2&qlt=80&cdv=1&pid=PopNow" alt="">
+  <img class="loading" data-src="https://cn.bing.com/th?id=OSA.D10BFE3AA76AF8BAA6405E30BBC9CE1F&w=186&h=88&c=7&rs=2&qlt=80&cdv=1&pid=PopNow" alt="">
+  <img class="loading" data-src="https://cn.bing.com/th?id=OSA.89C12E39B191B688CFDE390B9815E6E7&w=186&h=88&c=7&rs=2&qlt=80&cdv=1&pid=PopNow" alt="">
+  <img class="loading2" data-src="https://cn.bing.com/th?id=OHR.DroneGlobe_EN-CN2006548790_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
+<script type="text/javascript" src="lazyload.min.js"></script></body>
+<script>
+  var lazyload = new Lazyload(document.querySelectorAll('.loading'), {
+
+  });
+  lazyload.remove(document.querySelector('.loading'));
+  lazyload.add(document.querySelector('.loading2'));
+</script>
+  
+</script>
+</html>
