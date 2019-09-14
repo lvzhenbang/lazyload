@@ -1,8 +1,10 @@
+import 'intersection-observer';
+
 import defaults from '../config/defaults';
 import version from '../config/version';
 
 import inBrowser from './utils/inBrowser';
-import isSupportIntersectionObserver from './utils/isSupportIntersectionObserver';
+// import isSupportIntersectionObserver from './utils/isSupportIntersectionObserver';
 
 class Lazyload {
   constructor(els, opt) {
@@ -27,7 +29,7 @@ class Lazyload {
   }
 
   instance() {
-    if (!isSupportIntersectionObserver) return false;
+    // if (!isSupportIntersectionObserver) return false;
 
     this.observer = new window.IntersectionObserver((entries) => {
       entries.forEach((entry) => {
