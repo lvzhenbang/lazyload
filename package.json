@@ -1,6 +1,6 @@
 {
   "name": "lzb-loazyload",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "a plugin of loazyload",
   "main": "dist/loazyload.min.js",
   "repository": {
