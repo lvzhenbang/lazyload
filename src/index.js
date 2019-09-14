@@ -4,6 +4,7 @@ import defaults from '../config/defaults';
 import version from '../config/version';
 
 import inBrowser from './utils/inBrowser';
+import isSupportLoading from './utils/isSupportLoading';
 // import isSupportIntersectionObserver from './utils/isSupportIntersectionObserver';
 
 class Lazyload {
@@ -24,8 +25,13 @@ class Lazyload {
       throw new Error('this.$els must be exsits.');
     }
 
-    this.instance();
-    this.loadAll();
+    if (this.options.native && isSupportLoading()) {
+      this.loadNativeAll();
+    } else {
+      this.instance();
+      this.loadAll();
+    }
+
   }
 
   instance() {
@@ -58,26 +64,43 @@ class Lazyload {
 
   elHandle(el) {
     el.setAttribute('src', el.dataset.src);
-
-    this.loadingCount += 1;
-
+    
     el.addEventListener('load', () => {
-      console.log('xx')
+      this.loadingCount += 1;
+      console.log('xx');
     });
   }
 
   loadAll() {
     this.$els.forEach((el) => {
+      el.setAttribute('src', el.dataset.src);
+    
       this.observer.observe(el);
     });
   }
 
+  loadNativeAll() {
+    this.$els.forEach((el) => {
+      el.setAttribute('loading', 'lazy');
+      el.setAttribute('src', el.dataset.src);
+      this.elHandle(el);
+    });
+  }
+
   add(el) {
-    this.observer.observe(el);
+    if (this.options.native && isSupportLoading()) {
+      el.setAttribute('loading', 'lazy');
+    } else {
+      this.observer.observe(el);
+    }
   }
 
   remove(el) {
-    this.observer.unobserve(el);
+    if (this.options.native && isSupportLoading()) {
+      el.setAttribute('loading', 'eager');
+    } else {
+      this.observer.unobserve(el);
+    }
   }
 }
 
