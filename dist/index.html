@@ -18,6 +18,13 @@
       height: 100%;
       background-color: #ccc;
     }
+    img.fade {
+      opacity: 0;
+      transition: opacity 1s ease-in;
+    }
+    img.fade.loaded {
+      opacity: 1
+    }
     img+img {
       margin-top: 10px;
     }
@@ -53,7 +60,8 @@
 <script type="text/javascript" src="lazyload.min.js"></script></body>
 <script>
   var lazyload = new Lazyload(document.querySelectorAll('.loading'), {
-    native: false
+    native: false,
+    fade: true,
   });
   lazyload.remove(document.querySelector('.loading'));
   lazyload.add(document.querySelector('.loading2'));
