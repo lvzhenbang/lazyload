@@ -31,7 +31,6 @@ class Lazyload {
       this.instance();
       this.loadAll();
     }
-
   }
 
   instance() {
@@ -63,18 +62,29 @@ class Lazyload {
   }
 
   elHandle(el) {
-    el.setAttribute('src', el.dataset.src);
-    
+    if (this.options.setBg) {
+      el.removeAttribute('loading');
+      el.setAttribute('style', `background-image: url('${el.dataset.src}');`);
+    } else {
+      el.setAttribute('src', el.dataset.src);
+    }
+
+    this.loadingCount += 1;
     el.addEventListener('load', () => {
-      this.loadingCount += 1;
+      if (this.options.fade) {
+        el.classList.add('loaded');
+      }
       console.log('xx');
     });
   }
 
   loadAll() {
     this.$els.forEach((el) => {
-      el.setAttribute('src', el.dataset.src);
-    
+      if (this.options.fade) {
+        el.classList.add('fade');
+      }
+
+      el.setAttribute('loading', 'lazy');
       this.observer.observe(el);
     });
   }
