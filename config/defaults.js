@@ -4,6 +4,7 @@ const defaults = {
   native: false,
   setBg: false,
   fade: false,
+  icon: false,
 };
 
 export default defaults;

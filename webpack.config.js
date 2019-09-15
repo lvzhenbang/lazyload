@@ -29,6 +29,14 @@ module.exports = (mode) => {
         template: path.join(__dirname, 'tpl', 'native.html'),
         filename: 'native.html',
       }),
+      new HtmlWepbkPlugin({
+        template: path.join(__dirname, 'tpl', 'fade.html'),
+        filename: 'fade.html',
+      }),
+      new HtmlWepbkPlugin({
+        template: path.join(__dirname, 'tpl', 'loading-error.html'),
+        filename: 'loading-error.html',
+      }),
     ],
     devtool: isDev ? 'cheap-module-eval-source-map' : 'cheap-module-source-map',
   };

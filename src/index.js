@@ -74,7 +74,18 @@ class Lazyload {
       if (this.options.fade) {
         el.classList.add('loaded');
       }
+
+      if (this.options.icon) {
+        el.classList.remove('loading');
+      }
       console.log('xx');
+    });
+
+    el.addEventListener('error', () => {
+      if (this.options.icon) {
+        el.classList.remove('loading');
+        el.classList.add('loading-error');
+      }
     });
   }
 
@@ -82,6 +93,10 @@ class Lazyload {
     this.$els.forEach((el) => {
       if (this.options.fade) {
         el.classList.add('fade');
+      }
+
+      if (this.options.icon) {
+        el.classList.add('loading');
       }
 
       el.setAttribute('loading', 'lazy');
