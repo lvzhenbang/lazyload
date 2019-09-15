@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>error-lazyload</title>
+  <title>fade-lazyload</title>
   <style>
     html,body {
       margin: 0;
@@ -19,10 +19,6 @@
       height: 100%;
     }
 
-    img+img {
-      margin-top: 10px;
-    }
-
     .loading,
     .loading-error {
       background-color: #ccc;
@@ -30,12 +26,16 @@
       background-repeat: no-repeat;
     }
 
+    .loading-error {
+      background-image: url('./img/loading-error.svg');
+    }
+
     .loading {
       background-image: url('./img/loading.svg');
     }
 
-    .loading-error {
-      background-image: url('./img/loading-error.svg');
+    img+img {
+      margin-top: 10px;
     }
 
     .num {
@@ -56,22 +56,24 @@
 
 <body>
   <div class="num">0</div>
-  <img class="load" loading="eager" data-src="https://abc.bing.com/abc.jpg" alt="">
+  <img class="load" loading="eager" data-src="https://cn.bing.com/th?id=OHR.ToothWalkingSeahorse_ZH-CN5089043566_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
   <img class="load" loading="eager" data-src="https://cn.bing.com/th?id=OHR.DaintreeRiver_ZH-CN2284362798_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
   <img class="load" loading="eager" data-src="https://cn.bing.com/th?id=OHR.MilkyWayCanyonlands_ZH-CN2363274510_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
-  <img class="load" loading="eager" data-src="https://abc.baidu.com./baidu.jpg" alt="">
+  <img class="load" loading="eager" data-src="https://cn.bing.com/th?id=OHR.MountFanjing_ZH-CN1999613800_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
   <img class="load" loading="eager" data-src="https://cn.bing.com/th?id=OHR.SouthernYellow_ZH-CN2055825919_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
   <img class="load" loading="eager" data-src="https://cn.bing.com/th?id=OHR.SurfboardRow_ZH-CN5154549470_1920x1080.jpg&amp;rf=LaDigue_1920x1080.jpg&amp;pid=hp" alt="">
   <img class="load" loading="eager" data-src="https://cn.bing.com/th?id=OHR.midmoon_ZH-CN4973736313_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
   <img class="load" loading="eager" data-src="https://cn.bing.com/th?id=OHR.TsavoGerenuk_EN-CN2717398763_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
   <img class="load" loading="eager" data-src="https://cn.bing.com/th?id=OHR.DroneGlobe_EN-CN2006548790_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
-</body>
+  <img class="load2" loading="eager" data-src="https://cn.bing.com/th?id=OHR.ToothWalkingSeahorse_ZH-CN5089043566_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
+<script type="text/javascript" src="lazyload.min.js"></script></body>
 <script>
-  var lazyload = new Lazyload(document.querySelectorAll('.load'), {
+  var lazyload = new Lazyload(document.querySelectorAll('.loading'), {
     native: false,
-    fade: false,
-    icon: true,
+    fade: true,
   });
+  lazyload.remove(document.querySelector('.load'));
+  lazyload.add(document.querySelector('.load2'));
   var numEl = document.querySelector('.num');
   numEl.innerText = lazyload.loadingCount;
   setInterval(() => {
