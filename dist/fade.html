@@ -19,19 +19,8 @@
       height: 100%;
     }
 
-    .loading,
-    .loading-error {
+    .load {
       background-color: #ccc;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    .loading-error {
-      background-image: url('./img/loading-error.svg');
-    }
-
-    .loading {
-      background-image: url('./img/loading.svg');
     }
 
     img+img {
@@ -65,15 +54,13 @@
   <img class="load" loading="eager" data-src="https://cn.bing.com/th?id=OHR.midmoon_ZH-CN4973736313_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
   <img class="load" loading="eager" data-src="https://cn.bing.com/th?id=OHR.TsavoGerenuk_EN-CN2717398763_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
   <img class="load" loading="eager" data-src="https://cn.bing.com/th?id=OHR.DroneGlobe_EN-CN2006548790_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
-  <img class="load2" loading="eager" data-src="https://cn.bing.com/th?id=OHR.ToothWalkingSeahorse_ZH-CN5089043566_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
+  <img class="load" loading="eager" data-src="https://cn.bing.com/th?id=OHR.ToothWalkingSeahorse_ZH-CN5089043566_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp" alt="">
 <script type="text/javascript" src="lazyload.min.js"></script></body>
 <script>
-  var lazyload = new Lazyload(document.querySelectorAll('.loading'), {
+  var lazyload = new Lazyload(document.querySelectorAll('.load'), {
     native: false,
     fade: true,
   });
-  lazyload.remove(document.querySelector('.load'));
-  lazyload.add(document.querySelector('.load2'));
   var numEl = document.querySelector('.num');
   numEl.innerText = lazyload.loadingCount;
   setInterval(() => {
